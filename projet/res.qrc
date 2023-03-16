@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>qsdfg-01.png</file>
+        <file>sdf1-01.png</file>
+        <file>Untitled-1-01.png</file>
+        <file>xxxxxxccccccccccccc-01.png</file>
+        <file>xxxxxxxxx-01.png</file>
+        <file>logo application.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
