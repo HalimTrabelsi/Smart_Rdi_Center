@@ -1,0 +1,1623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1159</width>
+    <height>771</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:purple;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>-90</x>
+      <y>-40</y>
+      <width>1691</width>
+      <height>831</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Gestion des investisseurs</string>
+    </property>
+    <widget class="QLabel" name="nom_gestion">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>30</y>
+       <width>461</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT</family>
+       <pointsize>28</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Gestion des Investisseurs</string>
+     </property>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>170</y>
+       <width>1031</width>
+       <height>581</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT Condensed</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <widget class="QGroupBox" name="Add">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>10</y>
+         <width>701</width>
+         <height>541</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QDateEdit" name="date_Invest">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>170</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="dateLbael">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>170</y>
+          <width>211</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Date d'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="descLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>370</y>
+          <width>311</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Description de l'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Ajouter">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>10</y>
+          <width>421</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>22</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Ajouter un investissement</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="nom_Inv">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>90</y>
+          <width>181</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="id_label">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>90</y>
+          <width>201</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Nom d'invetisseur</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_add">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>490</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+</string>
+        </property>
+        <property name="text">
+         <string>Ajouter</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/ajouter.png</normaloff>:/Icones/Icones/ajouter.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="budgetLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>250</y>
+          <width>261</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Budget d'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="budget_Invest">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>260</y>
+          <width>201</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="desc_Invest">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>350</y>
+          <width>281</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <widget class="QGroupBox" name="Delete">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>20</y>
+         <width>531</width>
+         <height>541</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="supprimer">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>511</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>24</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Supprimer un investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nom_label_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>150</y>
+          <width>321</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Nom de l'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="DeleteName">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>230</y>
+          <width>231</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_delete">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>480</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+</string>
+        </property>
+        <property name="text">
+         <string>Supprimer</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/supprimer.png</normaloff>:/Icones/Icones/supprimer.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nom_label_8">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>310</y>
+          <width>501</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Voulez-vous vraiment supprimer cet investissement?</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="ConfirmDeleteCheckBox">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>400</y>
+          <width>251</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#ffc778;;
+</string>
+        </property>
+        <property name="text">
+         <string>Confirmer la suppression</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <widget class="QGroupBox" name="Modifier">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>20</y>
+         <width>551</width>
+         <height>531</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="Modifier_2">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>441</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>22</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Modifier un investissement</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pb_update">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>490</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+</string>
+        </property>
+        <property name="text">
+         <string>Update</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/ajouter.png</normaloff>:/Icones/Icones/ajouter.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="newNom">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>160</y>
+          <width>221</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="newDescription">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>400</y>
+          <width>201</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="descLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>410</y>
+          <width>311</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Description de l'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="id_label_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>150</y>
+          <width>231</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Nouveau nom</string>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="newDate">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>260</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="dateLbael_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>240</y>
+          <width>261</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Date d'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="newBudget">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>310</y>
+          <width>211</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="budgetLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>310</y>
+          <width>261</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Budget d'investissement</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_4">
+      <widget class="QGroupBox" name="afficher">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>-10</y>
+         <width>881</width>
+         <height>581</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="afficher_label">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>20</y>
+          <width>391</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>24</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Liste des investissements</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableInvest">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>150</y>
+          <width>651</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+          <underline>true</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_export">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>100</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Export PDF</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/pdf.png</normaloff>:/Icones/Icones/pdf.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>30</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_sort">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>100</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>TRI par date</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/ajouter.png</normaloff>:/Icones/Icones/ajouter.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="GotoSearch">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>100</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>search</string>
+        </property>
+       </widget>
+       <zorder>afficher_label</zorder>
+       <zorder>pushButton_export</zorder>
+       <zorder>pushButton_sort</zorder>
+       <zorder>tableInvest</zorder>
+       <zorder>GotoSearch</zorder>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_5">
+      <widget class="QGroupBox" name="Delete_2">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>10</y>
+         <width>691</width>
+         <height>541</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="supprimer_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>30</y>
+          <width>481</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>24</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Chercher un Investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="nom_label_3">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>160</y>
+          <width>91</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Nom</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="searchName">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>160</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableSearch">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>631</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+font-family: sans-serif;
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_Chercher">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>490</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+</string>
+        </property>
+        <property name="text">
+         <string>Chercher</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/ajouter.png</normaloff>:/Icones/Icones/ajouter.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_6">
+      <widget class="QGroupBox" name="Delete_3">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>20</y>
+         <width>691</width>
+         <height>541</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox {
+    font: 12px;
+ background-color:#be7fbe;
+}
+
+QLineEdit {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+QLabel {
+    font-weight: bold;
+    padding: 1px;
+}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QLabel" name="supprimer_3">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>10</y>
+          <width>621</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>22</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+border-radius: 10px;</string>
+        </property>
+        <property name="text">
+         <string>Envoi d'une demande d'investissement</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="MailLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>130</y>
+          <width>181</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>Mail Adresse</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recipientEdit">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>130</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_Mail">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>490</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>101</width>
+          <height>31</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:#ffc778;
+</string>
+        </property>
+        <property name="text">
+         <string>Mail</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/Icones/Icones/ajouter.png</normaloff>:/Icones/Icones/ajouter.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="subjectEdit">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>240</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="MailLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>230</y>
+          <width>181</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>   Object</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="MailLabel_3">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>330</y>
+          <width>181</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT</family>
+          <pointsize>18</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+        <property name="text">
+         <string>   Message</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="messageEdit">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>340</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tw Cen MT Condensed</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color:#D6DCE0;
+</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="GoToDelete">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>110</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT</family>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Supprimer</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GoToAdd">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>110</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT</family>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GoToUpdate">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>110</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT</family>
+       <pointsize>20</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Modifier</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="GoToTable">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>110</y>
+       <width>231</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Tw Cen MT</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <italic>true</italic>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton {
+    background-color: rgb(58, 195, 197);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus, QPushButton:focus {
+    border: 2px solid #4CAF50;
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string>Tableu d'investissements</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1159</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
