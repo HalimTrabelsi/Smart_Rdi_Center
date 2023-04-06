@@ -22,7 +22,6 @@ double getBudget(){return budgetInv;}
 QDate getDateinvest(){return dateInv;}
 
 //Setters
-
 void setNom(QString name){nomInv=name;}
 void setBudget(double budget){budgetInv=budget;}
 void setDescription(QString desc){descInv=desc;}
@@ -30,10 +29,12 @@ void setDate(QDate date){dateInv=date;}
 
 //functions
 bool createInvest();
-bool updateInvest(QString);
-QSqlQueryModel * showInvest();
-bool deleteInvest(QString,QDate);
-QSqlQueryModel* searchInvest(QString);
+bool updateInvest(QString searchName);
+QSqlQueryModel* showInvest();
+bool deleteInvest(QString);
+QSqlQueryModel* searchInvest(QString );
+QSqlQueryModel* sortInvest();
+
 
 
 

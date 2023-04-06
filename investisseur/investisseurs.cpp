@@ -1,19 +1,48 @@
 #include"investisseurs.h"
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QDoubleValidator>
+#include <QCheckBox>
+#include <QMessageBox>
+#include <QtNetwork/QSslSocket>
+#include <QtNetwork/QSslConfiguration>
+#include <QtNetwork/QSslError>
+
+
+
 investisseurs::investisseurs(QString nomInv,QString descInv,double budgetInv,QDate dateInv)
-{
-  this->nomInv=nomInv;
+{    QRegExp rx("^[A-Za-z ]+$");
+     if (!rx.exactMatch(nomInv) || !rx.exactMatch(descInv)) {
+         throw std::invalid_argument("Nom and description doit contenir que des lettres et des espaces");
+     }
+
+    this->nomInv=nomInv;
     this->descInv=descInv;
+
+
+      if (budgetInv <= 0) {
+             throw std::invalid_argument("Budget != 0 ou < 0");
+         }
+
     this->budgetInv=budgetInv;
     this->dateInv=dateInv;
 };
 bool investisseurs::createInvest()
 {
+    QSqlQuery query;
 
-   QSqlQuery query;
-  query.prepare("INSERT INTO INVESTISSEUR (NOM_INV, DESCINV, BUDGET,DATE_INV, BUDGET) "
-                "VALUES (:nomINV,:descInv,:dateINV,:budgetInv)");
+        // Check if user already exists
+        query.prepare("SELECT * FROM INVESTISSEUR WHERE NOM_INV = :nomInv");
+        query.bindValue(":nomInv", nomInv);
+        query.exec();
+
+        if (query.next()) {
+            return false;
+        }
+
+
+  query.prepare("INSERT INTO INVESTISSEUR (NOM_INV, DESCINV,DATE_INV, BUDGET) "
+                "VALUES (:nomInv,:descInv,:dateInv,:budgetInv)");
   query.bindValue(":dateInv", dateInv);
   query.bindValue(":budgetInv", budgetInv);
   query.bindValue(":descInv", descInv);
@@ -22,29 +51,30 @@ bool investisseurs::createInvest()
   return query.exec();
   }
 
-bool investisseurs::deleteInvest(QString nomInv,QDate dateInv)
+
+bool investisseurs::deleteInvest(QString nomInv)
 {
+    QSqlQuery query;
+    query.prepare("DELETE FROM INVESTISSEUR WHERE NOM_INV = :nomInv");
+    query.bindValue(":nomInv", nomInv);
 
-QSqlQuery query;
-query.prepare("DELETE FROM INVESTISSEUR WHERE DATE_INV = dateInv AND NOM_INV = nomINV");
-query.bindValue(":DATE_INV",dateInv.toString("yyyy-MM-dd"));
-query.bindValue("NOM_INV = nomINV",nomInv);
+    bool success = query.exec();
 
-query.exec();
-
-
-return (query.exec());
+    return success;
 }
+
+
 
 QSqlQueryModel * investisseurs::showInvest()
 {
     QSqlQueryModel * model=new QSqlQueryModel();
     model->setQuery("SELECT * FROM INVESTISSEUR ");
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Budget"));
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Description"));
     model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Description"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Budget"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("ID"));
+
 
     return model;
 
@@ -52,33 +82,51 @@ QSqlQueryModel * investisseurs::showInvest()
 
 }
 
-QSqlQueryModel * investisseurs::searchInvest(QString searchId)
+QSqlQueryModel* investisseurs::searchInvest(QString searchName)
 {
-    QSqlQueryModel* model=new QSqlQueryModel();
+    QSqlQueryModel* model = new QSqlQueryModel();
 
-    model->setQuery("SELECT * FROM INVESTISSEUR where ID_INV LIKE '"+searchId+"%' ");
+    QString query = "SELECT * FROM INVESTISSEUR WHERE NOM_INV LIKE '" + searchName + "%'";
+    model->setQuery(query);
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Nom"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Description"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Date"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Budget"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("ID"));
 
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Budget"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Description"));
+    if (model->rowCount() == 0) {
+        QMessageBox::warning(nullptr, "Erreur", "Aucun investissement ne correspond à votre recherche.");
+    }
 
     return model;
-
 }
 
-bool investisseurs::updateInvest(QString searchId)
+bool investisseurs::updateInvest(QString nomInv)
 {
     QSqlQuery query;
+    query.prepare("UPDATE INVESTISSEUR SET DATE_INV = :dateInv, BUDGET = :budgetInv, DESCINV = :descInv WHERE NOM_INV = :nomInv");
+    query.bindValue(":dateInv", dateInv);
+    query.bindValue(":budgetInv", budgetInv);
+    query.bindValue(":descInv", descInv);
+    query.bindValue(":nomInv", nomInv);
 
-   query.prepare("UPDATE INVESTISSEUR DATE_INV = :dateInv, BUDGET = :budgetInv, DESCINV = :descINV, NOM_INV = :nomInv) WHERE ID_INV LIKE '"+searchId+"%'");
-   query.bindValue(":dateInv", dateInv);
-   query.bindValue(":budgetInv", budgetInv);
-   query.bindValue(":descInv", descInv);
-   query.bindValue(":nomInv", nomInv );
+    return query.exec();
+}
 
-   return query.exec();
+
+QSqlQueryModel * investisseurs::sortInvest()
+{
+
+    QSqlQueryModel* model=new QSqlQueryModel();
+    model->setQuery("SELECT * FROM INVESTISSEUR ORDER BY DATE_INV ");
+    model->setHeaderData(0,Qt::Horizontal,QObject::tr("Nom"));
+    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Description"));
+    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Date"));
+    model->setHeaderData(3,Qt::Horizontal,QObject::tr("Budget"));
+    model->setHeaderData(4,Qt::Horizontal,QObject::tr("ID"));
+
+
+    return model;
 
 
 }
