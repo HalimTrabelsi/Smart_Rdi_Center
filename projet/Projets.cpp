@@ -75,9 +75,37 @@ QSqlQueryModel* Projets ::rechercherID(QString recherche)
 
     model->setQuery("SELECT * FROM Projets where Id_projet LIKE '"+recherche+"%' ");
 
+
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id projet"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Objet projet"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Desc projet"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Budget"));
+    return model;
+}
+QSqlQueryModel* Projets::rechercherParObjet(QString objet)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM Projets WHERE OBJET_PROJET LIKE '%" + objet + "%'");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id projet"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Objet projet"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Desc projet"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Budget"));
+
+    return model;
+}
+
+
+//----------------------------------------------------------Tri projets ----------------------------------------------------------//
+QSqlQueryModel* Projets::trierParBudget()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    model->setQuery("SELECT * FROM Projets ORDER BY Budget ASC");
+
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Id projet"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Objet projet"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Desc projet"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Budget"));
+
     return model;
 }

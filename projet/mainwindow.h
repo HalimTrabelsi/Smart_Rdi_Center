@@ -21,6 +21,11 @@ private slots:
     void on_pushButton_supprimer_clicked();
 
     void on_pb_modifier_clicked();
+    void on_triBudgetCroissant_clicked();
+    void on_recherche_projet_textChanged(const QString );
+    void on_ButtonPDF_clicked();
+    void on_pushButton_stat_clicked();
+    void on_rechercherParObjet_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
-    <height>640</height>
+    <width>1176</width>
+    <height>739</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,16 +22,28 @@
      <rect>
       <x>-150</x>
       <y>0</y>
-      <width>1021</width>
-      <height>631</height>
+      <width>1231</width>
+      <height>711</height>
      </rect>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(96, 195, 244);</string>
+     <string notr="true">background-color: #be7fbe;
+font: 12pt &quot;Cambria&quot;;
+QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid rgb(255, 0, 0);
+border-top: 3px solid rgb(255, 0, 0);
+border-left:  3px solid rgb(255, 0, 0);
+border-bottom: 3px solid rgb(255, 0, 0);
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}</string>
     </property>
     <property name="title">
      <string>The APP</string>
@@ -190,10 +202,10 @@ background-color: rgb(96, 195, 244);</string>
     <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
       <rect>
-       <x>146</x>
+       <x>150</x>
        <y>10</y>
-       <width>781</width>
-       <height>601</height>
+       <width>1071</width>
+       <height>691</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -204,11 +216,27 @@ background-color: rgb(96, 195, 244);</string>
      </property>
      <property name="font">
       <font>
-       <family>Poppins</family>
-       <pointsize>11</pointsize>
+       <family>Cambria</family>
+       <pointsize>12</pointsize>
        <weight>50</weight>
+       <italic>false</italic>
        <bold>false</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid #ffc778 ;
+border-top: 3px solid #ffc778 ;
+border-left:  3px solid #ffc778 ;
+border-bottom: 3px solid #ffc778 ;
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb#ffc778 ;
+color:rgb(255, 255, 255);
+}
+</string>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -227,10 +255,23 @@ background-color: rgb(96, 195, 244);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(133, 214, 255);</string>
+        <string notr="true">background-color: #be7fbe;
+font: 12pt &quot;Cambria&quot;;
+QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid rgb(255, 0, 0);
+border-top: 3px solid rgb(255, 0, 0);
+border-left:  3px solid rgb(255, 0, 0);
+border-bottom: 3px solid rgb(255, 0, 0);
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}</string>
        </property>
        <property name="title">
-        <string>Create</string>
+        <string>Ajouter projet</string>
        </property>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -248,9 +289,9 @@ background-color: rgb(96, 195, 244);</string>
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>10</x>
           <y>110</y>
-          <width>61</width>
+          <width>81</width>
           <height>20</height>
          </rect>
         </property>
@@ -320,10 +361,11 @@ background-color: rgb(96, 195, 244);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: #ffc778 ;
+font: 14pt &quot;Cambria&quot;;</string>
         </property>
         <property name="text">
-         <string>Add</string>
+         <string>Ajouter</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_8">
@@ -362,10 +404,11 @@ background-color: rgb(96, 195, 244);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: #ffc778 ;
+font: 14pt &quot;Cambria&quot;;</string>
         </property>
         <property name="text">
-         <string>Modify</string>
+         <string>Modifier</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="le_find">
@@ -374,14 +417,14 @@ background-color: rgb(96, 195, 244);</string>
           <x>92</x>
           <y>400</y>
           <width>201</width>
-          <height>22</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(223, 223, 223);</string>
         </property>
         <property name="text">
-         <string>Type here the id to modify</string>
+         <string>Mettez ici l'ID pour modifier</string>
         </property>
         <property name="placeholderText">
          <string extracomment="type here the id that you want to modify"/>
@@ -405,23 +448,49 @@ background-color: rgb(96, 195, 244);</string>
        <property name="geometry">
         <rect>
          <x>340</x>
-         <y>10</y>
-         <width>431</width>
+         <y>110</y>
+         <width>701</width>
          <height>301</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(133, 214, 255);</string>
+        <string notr="true">background-color: #be7fbe;
+font: 12pt &quot;Cambria&quot;;
+QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid rgb(255, 0, 0);
+border-top: 3px solid rgb(255, 0, 0);
+border-left:  3px solid rgb(255, 0, 0);
+border-bottom: 3px solid rgb(255, 0, 0);
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}</string>
        </property>
        <property name="title">
-        <string>Read</string>
+        <string>Afficher projets</string>
        </property>
        <widget class="QTableView" name="tab_etudiant">
         <property name="geometry">
          <rect>
           <x>20</x>
           <y>30</y>
-          <width>401</width>
+          <width>351</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableView">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>30</y>
+          <width>311</width>
           <height>241</height>
          </rect>
         </property>
@@ -433,17 +502,30 @@ background-color: rgb(96, 195, 244);</string>
       <widget class="QGroupBox" name="groupBox_7">
        <property name="geometry">
         <rect>
-         <x>340</x>
-         <y>330</y>
+         <x>350</x>
+         <y>420</y>
          <width>431</width>
          <height>201</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(133, 214, 255);</string>
+        <string notr="true">background-color: #be7fbe;
+font: 12pt &quot;Cambria&quot;;
+QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid rgb(255, 0, 0);
+border-top: 3px solid rgb(255, 0, 0);
+border-left:  3px solid rgb(255, 0, 0);
+border-bottom: 3px solid rgb(255, 0, 0);
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}</string>
        </property>
        <property name="title">
-        <string>Delete</string>
+        <string>Supprimer projet</string>
        </property>
        <widget class="QPushButton" name="pushButton_supprimer">
         <property name="geometry">
@@ -455,10 +537,11 @@ background-color: rgb(96, 195, 244);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">background-color: #ffc778 ;
+font: 14pt &quot;Cambria&quot;;</string>
         </property>
         <property name="text">
-         <string>Delete</string>
+         <string>Supprimer</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="le_IDS">
@@ -466,7 +549,7 @@ background-color: rgb(96, 195, 244);</string>
          <rect>
           <x>90</x>
           <y>70</y>
-          <width>171</width>
+          <width>211</width>
           <height>22</height>
          </rect>
         </property>
@@ -474,7 +557,7 @@ background-color: rgb(96, 195, 244);</string>
          <string notr="true">background-color: rgb(223, 223, 223);</string>
         </property>
         <property name="text">
-         <string>Type the ID to delete</string>
+         <string>Mettez ici l'ID pour supprimer</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_10">
@@ -490,6 +573,96 @@ background-color: rgb(96, 195, 244);</string>
          <string>ID</string>
         </property>
        </widget>
+      </widget>
+      <widget class="QPushButton" name="triBudgetCroissant">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>80</y>
+         <width>191</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Trier</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="recherche">
+       <property name="geometry">
+        <rect>
+         <x>440</x>
+         <y>20</y>
+         <width>461</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit {
+    border: 2px solid #d1d1d1;
+    border-radius: 10px;
+    padding: 8px;
+  
+}
+
+
+
+
+</string>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>                                   Chercher Projet</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ButtonPDF">
+       <property name="geometry">
+        <rect>
+         <x>860</x>
+         <y>430</y>
+         <width>171</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Créé un PDF</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_stat">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>80</y>
+         <width>191</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>statistique</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="rechercherParObjet">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>80</y>
+         <width>191</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>recherche</string>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="calendar">
@@ -542,7 +715,20 @@ background-color: rgb(96, 195, 244);</string>
     <string>toolBar</string>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(133, 214, 255);</string>
+    <string notr="true">background-color: #be7fbe;
+font: 12pt &quot;Cambria&quot;;
+QTabWidget::pane { /* The tab widget frame */
+border-right: 3px solid rgb(255, 0, 0);
+border-top: 3px solid rgb(255, 0, 0);
+border-left:  3px solid rgb(255, 0, 0);
+border-bottom: 3px solid rgb(255, 0, 0);
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+background:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}</string>
    </property>
    <property name="movable">
     <bool>false</bool>

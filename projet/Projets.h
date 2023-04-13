@@ -36,6 +36,8 @@ public:
     bool supprimer(int);
     bool modifier(QString Id_projet);
     QSqlQueryModel* rechercherID(QString );
+    QSqlQueryModel* trierParBudget();
+    QSqlQueryModel*rechercherParObjet(QString objet);
 
 };
 
