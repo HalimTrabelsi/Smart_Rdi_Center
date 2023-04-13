@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 #include"investisseurs.h"
-
+#include <QTextEdit>
+#include <QDialog>
+#include<QTcpSocket>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-
+class QTcpSocket;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -27,7 +29,11 @@ private slots:
     void on_pushButton_export_clicked();
     void on_GotoSearch_clicked();
     void on_pushButton_Chercher_clicked();
-
+    void on_GetStats_clicked();
+    void on_GotoStats_clicked();
+    void on_pushButton_sendMail_clicked();
+    void on_GoToMail_clicked();
+    void on_openMessengerConnection_clicked();
 
 private:
     Ui::MainWindow *ui;

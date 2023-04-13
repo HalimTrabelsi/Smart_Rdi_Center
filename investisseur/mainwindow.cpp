@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "chatconnection.h"
 #include "investisseurs.h"
+#include "messengerconnection.h"
+#include "ui_messengerconnection.h"
+#include"smtp.h"
 #include "QtDebug"
 #include <QMessageBox>
 #include <QCheckBox>
@@ -11,13 +15,14 @@
 #include <QMarginsF>
 #include<QPrintDialog>
 #include<QPdfWriter>
+#include <QDialog>
+#include<QTcpSocket>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) ,
      ui(new Ui::MainWindow)
 {
 
      ui->setupUi(this);
-
      ui->tableInvest->setModel(Etmp.showInvest());
      connect(ui->pushButton_export, SIGNAL(clicked()), this, SLOT(on_pushButton_export_clicked()));
 
@@ -211,48 +216,57 @@ void MainWindow::on_pushButton_sort_clicked()
 void MainWindow::on_pushButton_export_clicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "Export PDF", "", "*.pdf");
-        if (fileName.isEmpty()) return;
+    if (fileName.isEmpty()) return;
 
-        QPdfWriter writer(fileName);
-        writer.setPageSize(QPagedPaintDevice::A4);
+    QPdfWriter writer(fileName);
+    writer.setPageSize(QPagedPaintDevice::A4);
 
-        QPainter painter(&writer);
-        painter.setFont(QFont("Arial", 12));
+    QPainter painter(&writer);
+    painter.setFont(QFont("Arial", 4));
 
-        // draw table
-        QTableView* table = ui->tableInvest;
-        int rows = table->model()->rowCount();
-        int cols = table->model()->columnCount();
+    // draw table
+    QTableView* table = ui->tableInvest;
+    int rows = table->model()->rowCount() + 1;
+    int cols = table->model()->columnCount();
 
-        int x = 50;
-        int y = 50;
-        int w = writer.width() - 100;
+    int x = 100;
+    int y = 100;
+    int w = writer.width() - 100;
 
-        int colWidth = w / cols;
-        int rowHeight = 30;
+    int colWidth = w / cols;
+    int rowHeight = 120;
 
-        // draw header
-        for (int i = 0; i < cols; i++) {
-            QString header = table->model()->headerData(i, Qt::Horizontal).toString();
-            painter.drawText(x + i * colWidth, y, colWidth, rowHeight, Qt::AlignVCenter | Qt::AlignHCenter, header);
-            painter.drawRect(x + i * colWidth, y, colWidth, rowHeight);
+    // draw header
+    painter.setPen(Qt::black);
+    painter.setBrush(Qt::gray);
+    painter.drawRect(x, y, w, rowHeight);
+    painter.drawText(x, y, w, rowHeight, Qt::AlignVCenter | Qt::AlignHCenter, "Investisseurs");
+    for (int i = 0; i < cols; i++) {
+        QString header = table->model()->headerData(i, Qt::Horizontal).toString();
+        QRect cellRect(x + i * colWidth, y + rowHeight, colWidth, rowHeight);
+        painter.drawRect(cellRect);
+        painter.drawText(cellRect, Qt::AlignVCenter | Qt::AlignHCenter, header);
+    }
+
+    // draw data
+    y += 2 * rowHeight;
+    painter.setPen(Qt::black);
+    painter.setBrush(Qt::NoBrush);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            QModelIndex index = table->model()->index(i, j);
+            QString data = table->model()->data(index).toString();
+            QRect cellRect(x + j * colWidth, y + i * rowHeight, colWidth, rowHeight);
+            painter.drawRect(cellRect);
+            painter.drawText(cellRect, Qt::AlignVCenter | Qt::AlignHCenter, data);
         }
+    }
 
-        // draw data
-        y += rowHeight;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                QModelIndex index = table->model()->index(i, j);
-                QString data = table->model()->data(index).toString();
-                painter.drawText(x + j * colWidth, y + i * rowHeight, colWidth, rowHeight, Qt::AlignVCenter | Qt::AlignHCenter, data);
-                painter.drawRect(x + j * colWidth, y + i * rowHeight, colWidth, rowHeight);
-            }
-        }
+    painter.end();
 
-        painter.end();
-
-        QMessageBox::information(nullptr, "Export PDF", "Le fichier PDF a été enregistré avec succées");
+    QMessageBox::information(nullptr, "Export PDF", "Le fichier PDF a été enregistré avec succées");
 }
+
 
 
 //-----------------------------SEARCH BY Name-------------------//
@@ -270,6 +284,83 @@ void MainWindow::on_pushButton_Chercher_clicked()
 
 }
 //-----------------------------SEND investemment mail-------------------//
+
+
+
+void MainWindow::on_pushButton_sendMail_clicked()
+{
+    QString recipient = ui->recipientEdit->text().trimmed();
+    QString object = ui->objectEdit->text();
+    QString message = ui->bodyEdit->text();
+    QRegularExpression regex(R"(^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$)");
+    QRegularExpressionMatch match = regex.match(recipient);
+
+    //Input control
+    if (!match.hasMatch() || recipient.isEmpty()) {
+        QMessageBox::warning(nullptr, QObject::tr("Verification du Mail"),
+                                 QObject::tr("Mail invalide ou champ vide"), QMessageBox::Ok);
+        return;
+    }
+    if(object.isEmpty())
+    {
+        QMessageBox::warning(nullptr, QObject::tr("Verification de l'objet "),
+                                 QObject::tr("Objet du mail non valide"), QMessageBox::Ok);
+        return;
+
+
+    }
+    if(message.isEmpty())
+    {
+        QMessageBox::warning(nullptr, QObject::tr("Verification du message "),
+                                 QObject::tr("message du mail non valide"), QMessageBox::Ok);
+        return;
+
+
+    }
+
+
+    Smtp* smtp = new Smtp("trabelsihalim4@gmail.com", "ibpqpyoyhuzugpmw", "smtp.gmail.com", 465, 30000);
+    smtp->sendMail("trabelsihalim4@gmail.com", recipient, object, message);
+
+    QMessageBox::information(nullptr, QObject::tr("Mail"),
+                             QObject::tr("Mail envoyé avec succès."), QMessageBox::Ok);
+}
+//-----------------------------Staitsiques------------------//
+
+void MainWindow::on_GetStats_clicked()
+{   QMessageBox msgBox;
+    QLabel *statsLabel = ui->statsLabel;
+
+    investisseurs investor;
+    double avgBudget = investor.statistics();
+    double minBudget = investor.getMinBudget();
+    double maxBudget = investor.getMaxBudget();
+    //double budgetPerYear = investor.getBudgetPerYear();
+
+    QString output = "Moyenne des budgets: " + QString::number(avgBudget, 'f', 2) + " €\n" +
+                     "Budget minimum: " + QString::number(minBudget, 'f', 2) + " €\n" +
+                     "Budget maximum: " + QString::number(maxBudget, 'f', 2) + " €\n" ;
+
+
+    msgBox.setText("Statistiques des investisseurs");
+    msgBox.setInformativeText(output);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.exec();
+    statsLabel->setText(output);
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -304,8 +395,19 @@ void MainWindow::on_GotoSearch_clicked()
 
 }
 
+void MainWindow::on_GoToMail_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_GotoStats_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
+}
 
 
-
-
-
+void MainWindow::on_openMessengerConnection_clicked()
+{
+    investisseurMessenger::messengerConnection *messengerConnection = new investisseurMessenger::messengerConnection(this);
+       messengerConnection->exec();
+}

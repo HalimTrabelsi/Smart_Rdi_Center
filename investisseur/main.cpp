@@ -1,10 +1,15 @@
 #include "mainwindow.h"
 #include "connection.h"
+#include"messengerconnection.h"
 #include <QApplication>
 #include <QMessageBox>
+
+
+using  namespace investisseurMessenger;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setStyle("fusion");
     connection c;
     bool test=c.createConnection();
     MainWindow w;

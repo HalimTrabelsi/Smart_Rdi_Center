@@ -1,0 +1,13 @@
+INPUT(
+./debug\chatsocket.o
+./debug\connection.o
+./debug\investisseurs.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\messengerconnection.o
+./debug\smtp.o
+./debug\moc_chatsocket.o
+./debug\moc_mainwindow.o
+./debug\moc_messengerconnection.o
+./debug\moc_smtp.o
+);

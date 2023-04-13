@@ -1,0 +1,13 @@
+INPUT(
+./release\chatsocket.o
+./release\connection.o
+./release\investisseurs.o
+./release\main.o
+./release\mainwindow.o
+./release\messengerconnection.o
+./release\smtp.o
+./release\moc_chatsocket.o
+./release\moc_mainwindow.o
+./release\moc_messengerconnection.o
+./release\moc_smtp.o
+);

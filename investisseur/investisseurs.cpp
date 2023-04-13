@@ -1,4 +1,5 @@
 #include"investisseurs.h"
+#include "smtp.h"
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDoubleValidator>
@@ -7,13 +8,14 @@
 #include <QtNetwork/QSslSocket>
 #include <QtNetwork/QSslConfiguration>
 #include <QtNetwork/QSslError>
+#include<QtMath>
 
 
 
 investisseurs::investisseurs(QString nomInv,QString descInv,double budgetInv,QDate dateInv)
 {    QRegExp rx("^[A-Za-z ]+$");
      if (!rx.exactMatch(nomInv) || !rx.exactMatch(descInv)) {
-         throw std::invalid_argument("Nom and description doit contenir que des lettres et des espaces");
+         throw std::invalid_argument("Nom ou description doit contenir que des lettres et des espaces");
      }
 
     this->nomInv=nomInv;
@@ -31,7 +33,6 @@ bool investisseurs::createInvest()
 {
     QSqlQuery query;
 
-        // Check if user already exists
         query.prepare("SELECT * FROM INVESTISSEUR WHERE NOM_INV = :nomInv");
         query.bindValue(":nomInv", nomInv);
         query.exec();
@@ -130,4 +131,64 @@ QSqlQueryModel * investisseurs::sortInvest()
 
 
 }
+
+
+double investisseurs::getAvgBudget() const {
+    return avgBudget;
+}
+
+double investisseurs::getMinBudget() const {
+    return minBudget;
+}
+
+double investisseurs::getMaxBudget() const {
+    return maxBudget;
+}
+
+double investisseurs::getBudgetPerYear() const {
+    int years = QDate::currentDate().month() - dateInv.month() + 1;
+    return budgetInv / years;
+}
+
+
+double investisseurs::statistics() {
+    double totalBudget = 0.0;
+    double budgetPerYear = 0.0;
+
+    QSqlQuery query;
+
+    // Calculate the average budget
+    if (query.exec("SELECT AVG(budget) FROM investisseur")) {
+        if (query.next()) {
+            avgBudget = query.value(0).toDouble();
+        }
+    }
+
+    // Calculate the total budget
+    if (query.exec("SELECT SUM(budget) FROM investisseur")) {
+        if (query.next()) {
+            totalBudget = query.value(0).toDouble();
+        }
+    }
+
+    // Calculate the minimum and maximum budgets
+    if (query.exec("SELECT MIN(budget), MAX(budget) FROM investisseur")) {
+        if (query.next()) {
+            minBudget = query.value(0).toDouble();
+            maxBudget = query.value(1).toDouble();
+        }
+    }
+
+    // Calculate the budget per month
+    int months = QDate::currentDate().month() - dateInv.month() + 1;
+    budgetPerYear = totalBudget / months;
+
+    return budgetPerYear;
+}
+
+
+
+
+
+
 
